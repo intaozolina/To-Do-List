@@ -1,20 +1,24 @@
 <template>
-  <div :class="{ hidden: visible }" v-if="!isEdited">
-    <p :class="{ done: done }" @click="toggleDone()">
+  <div class="task" :class="{ hidden: visible }" v-if="!isEdited">
+    <p class="task__text" :class="{ done: done }" @click="toggleDone()">
       {{ content }}
     </p>
-    <button @click="removeTask()">Delete</button>
-    <button @click="editTask()">Edit</button>
-    <button @click="hideTask()">Hide</button>
+    <div class="task__buttons">
+      <button class="task_btn" @click="removeTask()">Delete</button>
+      <button class="task_btn" @click="editTask()">Edit</button>
+      <button class="task_btn" @click="hideTask()">Hide</button>
+    </div>
   </div>
-  <div v-if="isEdited">
-    <input type="text" v-model="inputValue" />
-    <button @click="saveChanges()">Save</button>
+  <div class="task" v-if="isEdited">
+    <input class="task__input" type="text" v-model="inputValue" />
+    <button class="task_btn" @click="saveChanges()">Save</button>
   </div>
 </template>
 
 <script lang="js">
 import { ref } from 'vue';
+import './singleTask.scss';
+
 export default {
   props:['done', 'content', 'visible', "isEdited"],
   emits: ['toggleDone', 'removeTask', 'editTask', 'hideTask', 'saveChanges'],
