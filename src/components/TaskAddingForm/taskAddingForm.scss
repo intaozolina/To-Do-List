@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: flex-end;
   gap: 20px;
-  margin-bottom: 40px;
+  margin: 40px auto;
 }
 
 .form__input {
@@ -14,40 +14,43 @@
 }
 
 .input__label {
-  color: #535e56;
-  font-size: 22px;
+  color: #0d6c6c;
+  text-shadow: 2px -2px 7px rgba(190, 202, 204, 0.99),
+  12px 7px 11px rgba(30, 64, 70, 0.57);
+  font-size: 26px;
 }
 
 .input__text {
   padding: 5px;
-  border: 1px solid #5c605c;
+  border: 1px solid #e1c512;
   border-radius: 5px;
-  background: linear-gradient(0deg, rgba(165,181,157,1) 1%, rgba(103,110,96,1) 100%);
-  box-shadow: 14px 13px 10px 0 rgba(116,125,120,0.77);
-  color: cornsilk;
+  background: linear-gradient(0deg, rgb(243, 239, 222) 1%, rgb(236, 230, 125) 100%);
+  box-shadow: 14px 13px 10px 0 rgba(8, 86, 108, 0.77);
+  color: #0d6c6c;
   font-size: 18px;
   &::placeholder {
-    color: cornsilk;
+    color: #0d6c6c;
   }
   &:focus {
     outline: none;
-    border: 1px solid #adbeb4;
-    background: #535e56;
+    border: 1px solid #faf8ea;
+    background: #f5e8ab;
+    color: #2c4859;
   }
 }
 
 .form_btn {
   padding: 5px;
-  border: 1px solid #dbe0cb;
+  border: 1px solid #faf8ea;
   border-radius: 5px;
-  background: #dbe0cb;
-  box-shadow: 14px 13px 10px 0 rgba(116,125,120,0.77);
-  color: #5c605c;
+  background: #f5e8ab;
+  box-shadow: 14px 13px 10px 0 rgba(8, 86, 108, 0.77);
+  color: #2c4e59;
   font-size: 18px;
   cursor: pointer;
   &:hover {
-    background: linear-gradient(0deg, rgba(165,181,157,1) 1%, rgba(103,110,96,1) 100%);
-    color:  cornsilk;
-    border: 1px solid #adbeb4;
+    background: linear-gradient(0deg, rgb(243, 239, 222) 1%, rgb(236, 230, 125) 100%);
+    color: #0d6c6c;
+    border: 1px solid #e1c512;
   }
 }

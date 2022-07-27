@@ -22,6 +22,7 @@ import './singleTask.scss';
 export default {
   props:['done', 'content', 'visible', "isEdited"],
   emits: ['toggleDone', 'removeTask', 'editTask', 'hideTask', 'saveChanges'],
+
   setup (props, context) {
 
     const inputValue = ref(props.content);
@@ -29,6 +30,7 @@ export default {
     const toggleDone = () => {
       context.emit('toggleDone');
     };
+
     const removeTask = () => {
     context.emit('removeTask');
   };
@@ -49,12 +51,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.done {
-  text-decoration: line-through;
-}
-.hidden {
-  display: none;
-}
-</style>
