@@ -1,24 +1,14 @@
-# todo-app
+## Hi!
+### This is my latest project of To Do List.
 
-## Project setup
-```
-npm install
-```
+<p> To my this project I used Vue 3 and Composition API, for global state there is used Vuex and SCSS for styling.</p>
+<p>In this App you can add tasks to do by using input area. You can edit, hide and delete each separate task, also you can show all tasks (including hided ones).</p>
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+<sub>P.S. to run code locally - use 'npm run serve' in your terminal or open http://localhost:8080/ in your browser</sub>
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+<h5>
+See how it works!
+</h5>
+<hr>
+<img src="../todo-app/src/assets/ezgif.com-gif-maker.gif" alt="To Do List" />
+<hr>
