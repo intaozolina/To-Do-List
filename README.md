@@ -10,5 +10,5 @@
 See how it works!
 </h5>
 <hr>
-<img src="../todo-app/src/assets/ezgif.com-gif-maker.gif" alt="To Do List" />
+<img src="../todo-app/src/assets/toDoList.gif" alt="To Do List" />
 <hr>
