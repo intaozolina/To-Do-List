@@ -1,3 +1,5 @@
+@import "../styleVariables";
+
 .task {
   width: 100%;
   display: flex;
@@ -5,17 +7,21 @@
   justify-content: space-between;
   padding: 20px 100px;
   border: 2px solid #5c605c;
-  background: linear-gradient(0deg, rgb(239, 239, 210) 1%, rgb(239, 209, 143) 100%);
+  background-image: $myGradient;
   border-radius: 20px;
-  box-shadow: 14px 13px 10px 0 rgba(8, 86, 108, 0.77);
+  box-shadow: $myBoxShadow;
   margin-bottom: 10px;
 }
 
 .task__text {
   align-self: center;
-  color: #0d6c6c;
+  color: $myTextColor;
   font-size: 24px;
   cursor: pointer;
+
+  &.done {
+    text-decoration: line-through;
+  }
 }
 
 .task__buttons {
@@ -30,37 +36,31 @@
   padding: 5px;
   border: 1px solid #faf8ea;
   border-radius: 5px;
-  background: #f5e8ab;
-  box-shadow: 14px 13px 10px 0 rgba(8, 86, 108, 0.77);
-  color: #2c4e59;
+  background-color: $myBackgroundColor;
+  box-shadow: $myBoxShadow;
+  color: $myTextColor;
   font-size: 14px;
   cursor: pointer;
+
   &:hover {
-    background: linear-gradient(0deg, rgb(243, 239, 222) 1%, rgb(236, 230, 125) 100%);
-    color: #0d6c6c;
+    background: $myGradient;
+    color: $myTextColor;
     border: 1px solid #e1c512;
   }
 }
 
 .task__input {
   padding: 5px;
-  background: #f1f195;
-  color: #30544d;
+  background-color: $myBackgroundColor;
+  color: $myTextColor;
   font-size: 20px;
   border-radius: 10px;
-  box-shadow: 14px 13px 10px 0 rgba(8, 86, 108, 0.77);
+  box-shadow: $myBoxShadow;
+
   &:focus {
     outline: none;
     border: 1px solid #f1f195;
-    background: rgb(246, 236, 199);
-    color: rgb(63, 91, 22);
+    background-color: $myBackgroundFocusColor;
+    color: $myTextColor;
   }
-}
-
-.done {
-  text-decoration: line-through;
-}
-
-.hidden {
-  display: none;
 }

@@ -1,0 +1,17 @@
+@import '../styleVariables';
+
+.btn {
+  padding: 5px;
+  border: 1px solid #faf8ea;
+  border-radius: 5px;
+  background-color: $myBackgroundColor;
+  box-shadow: $myBoxShadow;
+  color: $myTextColor;
+  cursor: pointer;
+
+  &:hover {
+    background: $myGradient;
+    color: $myTextColor;
+    border: 1px solid #e1c512;
+  }
+}

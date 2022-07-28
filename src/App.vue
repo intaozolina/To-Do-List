@@ -30,16 +30,17 @@ import TaskAddingForm from "@/components/TaskAddingForm/TaskAddingForm";
 import SingleTask from "@/components/SingleTask/SingleTask";
 import { useStore } from "vuex";
 import '@/components/App.scss';
+import { computed } from "vue";
 
 export default {
   components: { SingleTask, TaskAddingForm },
   setup() {
 
 const store = useStore();
-const tasks =  store.state.tasks;
+const tasks =  computed(()=> store.state.tasks);
 
 const addNewTask = (task) => {
-  store.dispatch('addNewTask', task)
+  store.commit('addNewTask', task);
 };
 
 const showAllTasks = () => {
@@ -65,6 +66,8 @@ const hideTask = (taskId) => {
 const saveChanges = (taskId, value) => {
   store.dispatch('saveChanges', { taskId, value })
 };
+
+
 
 return { tasks, addNewTask, toggleDone, removeTask, editTask, hideTask, showAllTasks, saveChanges}
   }

@@ -8,60 +8,83 @@ type Task = {
   content: string;
 };
 
+const storage = (newState: Task[]) => {
+  localStorage.setItem("tasksList", JSON.stringify(newState));
+};
 export default createStore({
   state: {
-    tasks: JSON.parse(localStorage.getItem("tasks") || "[]") as Task[],
+    tasks: JSON.parse(localStorage.getItem("tasksList") || "[]") as Task[],
   },
   getters: {},
   mutations: {
-    addNewTask({ tasks }, task: string) {
-      tasks.push({
-        id: tasks.length + 1,
-        done: false,
-        isEdited: false,
-        isHidden: false,
-        content: task,
+    addNewTask(state, task: string) {
+      state.tasks = [
+        ...state.tasks,
+        {
+          id: Math.floor(Math.random() * 10),
+          done: false,
+          isEdited: false,
+          isHidden: false,
+          content: task,
+        },
+      ];
+      storage(state.tasks);
+    },
+
+    removeTask(state, index: number) {
+      const newTasks = [...state.tasks];
+      newTasks.splice(index, 1);
+      state.tasks = newTasks;
+      storage(state.tasks);
+    },
+
+    hideTask(state, taskId: number) {
+      state.tasks = state.tasks.map((task) => {
+        if (task.id === taskId) {
+          task.isHidden = true;
+        }
+        return task;
       });
-
-      localStorage.setItem("tasks", JSON.stringify(tasks));
+      storage(state.tasks);
     },
 
-    removeTask({ tasks }, index: number) {
-      tasks.splice(index, 1);
-      localStorage.setItem("tasks", JSON.stringify(tasks));
+    toggleDone(state, taskId: number) {
+      state.tasks = state.tasks.map((task) => {
+        if (task.id === taskId) {
+          task.done = !task.done;
+        }
+        return task;
+      });
+      storage(state.tasks);
     },
 
-    hideTask({ tasks }, taskId: number) {
-      const currentTask = tasks.find((task) => task.id === taskId);
-      if (currentTask) {
-        currentTask.isHidden = true;
-      }
+    editTask(state, taskId: number) {
+      state.tasks = state.tasks.map((task) => {
+        if (task.id === taskId) {
+          task.isEdited = true;
+        }
+        return task;
+      });
+      storage(state.tasks);
     },
 
-    toggleDone({ tasks }, taskId: number) {
-      const currentTask = tasks.find((task) => task.id === taskId);
-      if (currentTask) {
-        currentTask.done = !currentTask.done;
-      }
+    saveChanges(state, { taskId, value }) {
+      state.tasks = state.tasks.map((task) => {
+        if (task.id === taskId) {
+          task.content = value;
+          task.isEdited = false;
+        }
+        return task;
+      });
+      storage(state.tasks);
     },
 
-    editTask({ tasks }, taskId: number) {
-      const currentTask = tasks.find((task) => task.id === taskId);
-      if (currentTask) {
-        currentTask.isEdited = true;
-      }
-    },
-
-    saveChanges({ tasks }, { taskId, value }) {
-      const currentTask = tasks.find((task) => task.id === taskId);
-      if (currentTask) {
-        currentTask.content = value;
-        currentTask.isEdited = false;
-      }
-    },
-
-    showAllTasks({ tasks }) {
-      tasks.forEach((task) => (task.isHidden = false));
+    showAllTasks(state) {
+      state.tasks = state.tasks.map((task) => {
+        task.isHidden = false;
+        return task;
+      });
+      storage(state.tasks);
     },
   },
 

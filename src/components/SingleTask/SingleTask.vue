@@ -9,7 +9,7 @@
       <button class="task_btn" @click="hideTask()">Hide</button>
     </div>
   </div>
-  <div class="task" v-if="isEdited">
+  <div class="task" v-else>
     <input class="task__input" type="text" v-model="inputValue" />
     <button class="task_btn" @click="saveChanges()">Save</button>
   </div>
@@ -18,33 +18,34 @@
 <script lang="js">
 import { ref } from 'vue';
 import './singleTask.scss';
+import '../helper.scss';
 
 export default {
-  props:['done', 'content', 'visible', "isEdited"],
+  props:['done', 'content', 'visible', 'isEdited'],
   emits: ['toggleDone', 'removeTask', 'editTask', 'hideTask', 'saveChanges'],
 
-  setup (props, context) {
+  setup (props, { emit }) {
 
     const inputValue = ref(props.content);
 
     const toggleDone = () => {
-      context.emit('toggleDone');
+      emit('toggleDone');
     };
 
     const removeTask = () => {
-    context.emit('removeTask');
+    emit('removeTask');
   };
 
     const editTask = () => {
-    context.emit('editTask');
+    emit('editTask');
   };
 
     const hideTask = () => {
-      context.emit('hideTask');
+      emit('hideTask');
     };
 
     const saveChanges = () => {
-      context.emit('saveChanges', inputValue);
+      emit('saveChanges', inputValue);
     };
 
     return {editTask, removeTask, toggleDone, hideTask, saveChanges, inputValue}
