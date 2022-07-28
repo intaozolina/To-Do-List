@@ -4,29 +4,58 @@
       {{ content }}
     </p>
     <div class="task__buttons">
-      <button class="task_btn" @click="removeTask()">Delete</button>
-      <button class="task_btn" @click="editTask()">Edit</button>
-      <button class="task_btn" @click="hideTask()">Hide</button>
+      <div class="task__button" v-for="button in taskButtons" :key="button.id">
+        <MainButton
+          :btnName="button.name"
+          :textSize="14"
+          @clickHandler="button.handler"
+        />
+      </div>
     </div>
   </div>
   <div class="task" v-else>
     <input class="task__input" type="text" v-model="inputValue" />
-    <button class="task_btn" @click="saveChanges()">Save</button>
+    <div>
+      <MainButton
+        :btnName="'Save'"
+        :btnSize="14"
+        @clickHandler="saveChanges()"
+      />
+    </div>
   </div>
 </template>
 
 <script lang="js">
 import { ref } from 'vue';
+import MainButton from "@/components/Buttons/MainButton";
 import './singleTask.scss';
 import '../helper.scss';
 
 export default {
+  components: { MainButton },
   props:['done', 'content', 'visible', 'isEdited'],
   emits: ['toggleDone', 'removeTask', 'editTask', 'hideTask', 'saveChanges'],
 
   setup (props, { emit }) {
 
     const inputValue = ref(props.content);
+    const taskButtons = [
+      {
+        id:1,
+        name: 'Delete',
+        handler: ()=>removeTask(),
+      },
+      {
+        id:2,
+        name: 'Edit',
+        handler: ()=>editTask(),
+      },
+      {
+        id:3,
+        name: 'Hide',
+        handler: ()=>hideTask(),
+      }
+    ];
 
     const toggleDone = () => {
       emit('toggleDone');
@@ -48,7 +77,7 @@ export default {
       emit('saveChanges', inputValue);
     };
 
-    return {editTask, removeTask, toggleDone, hideTask, saveChanges, inputValue}
+    return {inputValue, taskButtons, editTask, removeTask, toggleDone, hideTask, saveChanges, }
   }
 }
 </script>

@@ -11,15 +11,18 @@
         placeholder="Type text here"
       />
     </div>
-    <button class="form_btn">Add to list</button>
-    <button class="form_btn" type="button" @click="showAllTasks()">
-      Show all tasks
-    </button>
-    <MainButton
-      :btnName="'Show all'"
-      :textSize="'18'"
-      @clickHandler="showAllTasks()"
-    />
+    <div class="form__btn">
+      <MainButton
+        :btnName="'Add to list'"
+        :textSize="18"
+        @clickHandler="addTask()"
+      />
+      <MainButton
+        :btnName="'Show all'"
+        :textSize="18"
+        @clickHandler="showAllTasks()"
+      />
+    </div>
   </form>
 </template>
 

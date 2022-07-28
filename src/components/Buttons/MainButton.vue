@@ -1,5 +1,5 @@
 <template>
-  <button class="btn" :style="fontSize">
+  <button class="btn" :style="fontSize" @click="clickHandler()">
     {{ btnName }}
   </button>
 </template>
@@ -8,24 +8,18 @@
 import './button.scss';
 
 export default {
-  props: [{
-    btnName: String,
-    textSize: String,
-}],
+  props: ['btnName', 'textSize'],
   emits: ['clickHandler'],
 
   setup(props, { emit }) {
 
-    const btnName = this.props.btnName;
+    const fontSize = `font-size: ${props.textSize}px`;
 
-    const fontSize = () => {
-      return `font-size: ${this.props.textSize}px`;
-    };
 
     const clickHandler = () => {
       emit("clickHandler")
     }
-    return { fontSize, btnName, clickHandler }
+    return { fontSize, clickHandler }
   }
 }
 </script>

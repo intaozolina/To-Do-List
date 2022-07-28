@@ -32,22 +32,6 @@
   align-self: flex-end;
 }
 
-.task_btn {
-  padding: 5px;
-  border: 1px solid #faf8ea;
-  border-radius: 5px;
-  background-color: $myBackgroundColor;
-  box-shadow: $myBoxShadow;
-  color: $myTextColor;
-  font-size: 14px;
-  cursor: pointer;
-
-  &:hover {
-    background: $myGradient;
-    color: $myTextColor;
-    border: 1px solid #e1c512;
-  }
-}
 
 .task__input {
   padding: 5px;

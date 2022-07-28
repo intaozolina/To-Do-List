@@ -42,20 +42,8 @@
   }
 }
 
-.form_btn {
-  padding: 5px;
-  border: 1px solid #faf8ea;
-  border-radius: 5px;
-  background-color: $myBackgroundColor;
-  box-shadow: $myBoxShadow;
-  color: $myTextColor;
-  font-size: 18px;
-  cursor: pointer;
-
-  &:hover {
-    background-image: $myGradient;
-    color: $myTextColor;
-    border: 1px solid #e1c512;
-  }
-
+.form__btn {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 }
