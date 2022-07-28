@@ -4,12 +4,12 @@
       {{ content }}
     </p>
     <div class="task__buttons">
-      <div class="task__button" v-for="button in taskButtons" :key="button.id">
-        <MainButton
-          :btnName="button.name"
-          :textSize="14"
-          @clickHandler="button.handler"
-        />
+      <div
+        class="task__button"
+        v-for="{ id, name, handler } in taskButtons"
+        :key="id"
+      >
+        <MainButton :btnName="name" :textSize="14" @clickHandler="handler" />
       </div>
     </div>
   </div>
